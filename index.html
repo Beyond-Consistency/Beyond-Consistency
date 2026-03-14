@@ -179,10 +179,71 @@
 </section>
 <!-- End paper abstract -->
 
-<!-- Experiment 1:  -->
+<!-- Method Overview (Newly Added) -->
 <section class="section">
   <div class="container is-max-desktop">
-    <h2 class="title is-3">Experiment 1</h2>
+    <h2 class="title is-3 has-text-centered">Method Overview</h2>
+    
+    <!-- Method Pipeline Figure -->
+    <div class="columns is-centered" style="margin-top: 30px; margin-bottom: 30px;">
+      <div class="column is-full">
+        <img src="static/images/method_overview.png" alt="Method overview pipeline" style="width: 100%; height: auto; border-radius: 8px;"/>
+        <p class="has-text-centered" style="margin-top: 15px; font-style: italic;">
+          Overview of our proposed framework. Given a source video, we first capture its temporal structure via adaptive video partition and anchor frame selection. Guided by this structure, we then perform clip-adaptive token merging and alternated combination of adjacent clips during the denoising diffusion process to generate the edited video.
+        </p>
+      </div>
+    </div>
+
+    <!-- Method Description -->
+    <div class="content has-text-justified">
+      <div class="columns is-centered">
+        <div class="column is-four-fifths">
+          <h3 class="title is-4" style="margin-top: 20px;">Core Design Principles</h3>
+          <p>
+            Our framework is built upon three key innovations that work synergistically to preserve temporal structure while enabling flexible zero-shot video editing:
+          </p>
+          
+          <div style="margin-top: 25px;">
+            <h4 class="title is-5">1. Adaptive Video Partition and Anchor Frame Selection</h4>
+            <p>
+              We first partition the source video into variable-length clips with distinct semantic contents based on inter-frame similarity measured by diffusion features. For each clip, we select an anchor frame that best represents its semantic content. This arrangement of clips and anchor frames forms the temporal structure of the video, which we preserve throughout the editing process.
+            </p>
+          </div>
+
+          <div style="margin-top: 25px;">
+            <h4 class="title is-5">2. Clip-Adaptive Token Merging</h4>
+            <p>
+              Guided by the captured temporal structure, we perform clip-adaptive token merging within each clip during the denoising process. We constrain token interaction via spatiotemporal windows and use lightweight similarity measurement to filter redundant tokens. This strategy enhances intra-clip fidelity while significantly reducing computational overhead, leveraging the anchor frame's semantic dominance to stabilize editing.
+            </p>
+          </div>
+
+          <div style="margin-top: 25px;">
+            <h4 class="title is-5">3. Alternated Combination of Adjacent Clips</h4>
+            <p>
+              To ensure seamless inter-clip continuity while maintaining semantic distinction between clips, we employ an alternating combination strategy for joint self-attention of merged tokens from adjacent clips. This strategy is applied only in later diffusion timesteps, where details such as style or texture are refined. The alternating layout between odd and even timesteps enhances long-term consistency without requiring expensive global computation across all clips simultaneously.
+            </p>
+          </div>
+
+          <div style="margin-top: 30px; padding: 20px; background-color: #f5f5f5; border-radius: 8px;">
+            <h4 class="title is-5">Key Advantages</h4>
+            <ul>
+              <li><strong>Temporal Structure Preservation:</strong> Explicitly models and preserves the source video's high-level narrative, rhythm, and semantic flow</li>
+              <li><strong>Computational Efficiency:</strong> Achieves significant reduction in computation through clip-adaptive token merging and local spatiotemporal windows</li>
+              <li><strong>Flexibility:</strong> Seamlessly integrates with existing image editing control mechanisms (e.g., ControlNet, Plug-and-Play)</li>
+              <li><strong>State-of-the-Art Performance:</strong> Outperforms existing methods on both short and long videos with complex semantic variations</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Method Overview -->
+
+<!-- Ablation Experiment 1: Ground-Adaptive 3D Motion Retargeting -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Ablation on ground-adaptive 3D motion retargeting</h2>
     
     <!-- Case 1 -->
     <div class="columns is-vcentered is-centered" style="margin-top: 30px; margin-bottom: 40px;">
@@ -258,16 +319,16 @@
 
     <!-- Caption Text -->
     <div class="content has-text-justified" style="margin-top: 15px;">
-      <p>Experiment 1</p>
+      <p>Ablation on ground-adaptive 3D motion retargeting. Our method addresses floating or penetrating on steps and slopes while enabling the human movement to undulate with the ground.</p>
     </div>
   </div>
 </section>
 <!-- End Ablation Experiment 1 -->
 
-<!-- Experiment 2 -->
-<section class="section hero is-light">
+<!-- Ablation Experiment 2: Viewpoint-Adaptive Scene Guided Fusion -->
+<section class="section">
   <div class="container is-max-desktop">
-    <h2 class="title is-3">Experiment 2</h2>
+    <h2 class="title is-3">Ablation on viewpoint-adaptive scene guided fusion for camera control</h2>
     
     <!-- Case 1 -->
     <div class="columns is-vcentered is-centered" style="margin-top: 30px; margin-bottom: 40px;">
