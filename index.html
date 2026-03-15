@@ -116,7 +116,7 @@
   <style>
     .result-video {
       width: 100%;
-      max-width: 320px;
+      max-width: 240px; /* 稍微缩小以适应更多视频列 */
       height: auto;
       object-fit: contain;
       border-radius: 6px;
@@ -270,12 +270,10 @@
         </video>
         <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">VidToMe</p>
       </div>
-    </div>
-
-      <!-- adaflow视频 -->
+      <!-- AdaFlow视频 -->
       <div class="column has-text-centered">
         <video 
-          poster="static/images/ground_case3_vidtome_poster.png" 
+          poster="static/images/ground_case1_adaflow_poster.png" 
           controls 
           muted 
           loop 
@@ -286,12 +284,10 @@
         </video>
         <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">AdaFlow</p>
       </div>
-    </div>
-
-      <!-- rave视频 -->
+      <!-- RAVE视频 -->
       <div class="column has-text-centered">
         <video 
-          poster="static/images/ground_case3_vidtome_poster.png" 
+          poster="static/images/ground_case1_rave_poster.png" 
           controls 
           muted 
           loop 
@@ -302,12 +298,10 @@
         </video>
         <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">RAVE</p>
       </div>
-    </div>
-
       <!-- Slicedit视频 -->
       <div class="column has-text-centered">
         <video 
-          poster="static/images/ground_case3_vidtome_poster.png" 
+          poster="static/images/ground_case1_slicedit_poster.png" 
           controls 
           muted 
           loop 
@@ -368,12 +362,10 @@
         </video>
         <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">VidToMe</p>
       </div>
-    </div>
-
-      <!-- adaflow视频 -->
+      <!-- AdaFlow视频 -->
       <div class="column has-text-centered">
         <video 
-          poster="static/images/ground_case3_vidtome_poster.png" 
+          poster="static/images/ground_case2_adaflow_poster.png" 
           controls 
           muted 
           loop 
@@ -384,12 +376,10 @@
         </video>
         <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">AdaFlow</p>
       </div>
-    </div>
-
-      <!-- rave视频 -->
+      <!-- RAVE视频 -->
       <div class="column has-text-centered">
         <video 
-          poster="static/images/ground_case3_vidtome_poster.png" 
+          poster="static/images/ground_case2_rave_poster.png" 
           controls 
           muted 
           loop 
@@ -400,12 +390,10 @@
         </video>
         <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">RAVE</p>
       </div>
-    </div>
-
       <!-- Slicedit视频 -->
       <div class="column has-text-centered">
         <video 
-          poster="static/images/ground_case3_vidtome_poster.png" 
+          poster="static/images/ground_case2_slicedit_poster.png" 
           controls 
           muted 
           loop 
@@ -466,12 +454,10 @@
         </video>
         <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">VidToMe</p>
       </div>
-    </div>
-
-      <!-- adaflow视频 -->
+      <!-- AdaFlow视频 -->
       <div class="column has-text-centered">
         <video 
-          poster="static/images/ground_case3_vidtome_poster.png" 
+          poster="static/images/ground_case3_adaflow_poster.png" 
           controls 
           muted 
           loop 
@@ -482,12 +468,10 @@
         </video>
         <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">AdaFlow</p>
       </div>
-    </div>
-
-      <!-- rave视频 -->
+      <!-- RAVE视频 -->
       <div class="column has-text-centered">
         <video 
-          poster="static/images/ground_case3_vidtome_poster.png" 
+          poster="static/images/ground_case3_rave_poster.png" 
           controls 
           muted 
           loop 
@@ -498,12 +482,10 @@
         </video>
         <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">RAVE</p>
       </div>
-    </div>
-
       <!-- Slicedit视频 -->
       <div class="column has-text-centered">
         <video 
-          poster="static/images/ground_case3_vidtome_poster.png" 
+          poster="static/images/ground_case3_slicedit_poster.png" 
           controls 
           muted 
           loop 
@@ -516,8 +498,11 @@
       </div>
     </div>
 
-
-
+    <!-- Caption Text -->
+    <div class="content has-text-justified" style="margin-top: 30px;">
+      <p>Qualitative comparison of zero-shot video editing results on real-world videos.</p>
+    </div>
+  </div>
 </section>
 <!-- End Experiment 1 -->
 
@@ -532,7 +517,7 @@
       <div class="column is-1 has-text-centered case-label">
         <p>case-1</p>
       </div>
-      <!-- Without Temproal Structure -->
+      <!-- Without Viewpoint Guidance -->
       <div class="column has-text-centered">
         <video 
           poster="static/images/viewpoint_case1_without_poster.png" 
