@@ -541,43 +541,9 @@
   <div class="container is-max-desktop">
     <h2 class="title is-3">Experiment 2</h2>
     
-    <!-- Case 1 -->
-    <div class="columns is-vcentered is-centered" style="margin-top: 30px; margin-bottom: 40px;">
-      <!-- Case Label -->
-      <div class="column is-1 has-text-centered case-label">
-        <p>case-1</p>
-      </div>
-      <!-- Without Viewpoint Guidance -->
-      <div class="column has-text-centered">
-        <video 
-          poster="static/images/viewpoint_case1_without_poster.png" 
-          controls 
-          muted 
-          loop 
-          autoplay 
-          preload="metadata"
-          class="result-video">
-          <source src="static/videos/viewpoint_case1_without.mp4" type="video/mp4">
-        </video>
-        <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">Without viewpoint-adaptive scene guidance</p>
-      </div>
-      <!-- With Viewpoint Guidance -->
-      <div class="column has-text-centered">
-        <video 
-          poster="static/images/viewpoint_case1_with_poster.png" 
-          controls 
-          muted 
-          loop 
-          autoplay 
-          preload="metadata"
-          class="result-video">
-          <source src="static/videos/viewpoint_case1_with.mp4" type="video/mp4">
-        </video>
-        <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">With viewpoint-adaptive scene guidance</p>
-      </div>
-    </div>
+  
 
-    <!-- Case 2 -->
+    <!-- Case 1 -->
     <div class="columns is-vcentered is-centered" style="margin-bottom: 40px;">
       <!-- Case Label -->
       <div class="column is-1 has-text-centered case-label">
@@ -593,7 +559,7 @@
           autoplay 
           preload="metadata"
           class="result-video">
-          <source src="static/videos/viewpoint_case2_input.mp4" type="video/mp4">
+          <source src="static/videos/packreference.mp4" type="video/mp4">
         </video>
         <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">Input Reference</p>
       </div>
@@ -607,9 +573,9 @@
           autoplay 
           preload="metadata"
           class="result-video">
-          <source src="static/videos/viewpoint_case2_without.mp4" type="video/mp4">
+          <source src="static/videos/packxiaorong1.mp4" type="video/mp4">
         </video>
-        <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">Without viewpoint-adaptive scene guidance</p>
+        <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">Without Temporal Structure</p>
       </div>
       <!-- With Viewpoint Guidance -->
       <div class="column has-text-centered">
@@ -621,13 +587,13 @@
           autoplay 
           preload="metadata"
           class="result-video">
-          <source src="static/videos/viewpoint_case2_with.mp4" type="video/mp4">
+          <source src="static/videos/packours.mp4" type="video/mp4">
         </video>
-        <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">With viewpoint-adaptive scene guidance</p>
+        <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">With Temporal Structure</p>
       </div>
     </div>
 
-    <!-- Case 3 -->
+    <!-- Case 2 -->
     <div class="columns is-vcentered is-centered">
       <!-- Case Label -->
       <div class="column is-1 has-text-centered case-label">
@@ -659,7 +625,7 @@
           class="result-video">
           <source src="static/videos/viewpoint_case3_without.mp4" type="video/mp4">
         </video>
-        <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">Without viewpoint-adaptive scene guidance</p>
+        <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">Without Clip-Adaptive Token Merging</p>
       </div>
       <!-- With Viewpoint Guidance -->
       <div class="column has-text-centered">
@@ -673,7 +639,7 @@
           class="result-video">
           <source src="static/videos/viewpoint_case3_with.mp4" type="video/mp4">
         </video>
-        <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">With viewpoint-adaptive scene guidance</p>
+        <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">With Clip-Adaptive Token Merging</p>
       </div>
     </div>
   </div>
