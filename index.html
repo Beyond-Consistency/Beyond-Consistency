@@ -111,6 +111,26 @@
     ]
   }
   </script>
+
+  <!-- 全局视频统一样式，确保所有视频等比例、对齐 -->
+  <style>
+    .result-video {
+      width: 100%;
+      max-width: 320px;
+      height: auto;
+      object-fit: contain;
+      border-radius: 6px;
+      margin: 0 auto;
+      display: block;
+    }
+    .case-label p {
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      font-weight: 600;
+      font-size: 16px;
+      margin: 0;
+    }
+  </style>
 </head>
 <body>
 
@@ -179,7 +199,7 @@
 </section>
 <!-- End paper abstract -->
 
-<!-- Method Overview (Newly Added) -->
+<!-- Method Overview -->
 <section class="section">
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered">Method Overview</h2>
@@ -193,185 +213,170 @@
         </p>
       </div>
     </div>
+  </div>
+</section>
+<!-- End Method Overview -->
 
-
-<!--Experiment 1 -->
+<!-- Experiment 1 -->
 <section class="section hero is-light">
   <div class="container is-max-desktop">
-    <h2 class="title is-3">-Experiment 1</h2>
+    <h2 class="title is-3">Experiment 1</h2>
     
-    <!-- Case 1 -->
-    <div class="columns is-vcentered is-centered" style="margin-top: 30px; margin-bottom: 40px;">
-      <!-- Case Label -->
-      <div class="column is-1 has-text-centered">
-        <p style="writing-mode: vertical-rl; text-orientation: mixed; font-weight: 600; font-size: 16px;">“Cat”  To  “Tiger”
-</p>
+    <!-- Case 1: Cat To Tiger -->
+    <div class="columns is-vcentered is-centered" style="margin-top: 40px; margin-bottom: 40px;">
+      <!-- 左侧竖排Case标签 -->
+      <div class="column is-1 has-text-centered case-label">
+        <p>“Cat” To “Tiger”</p>
       </div>
-      <!-- Without Ground Adaptation -->
-      <div class="column">
+      <!-- Source视频 -->
+      <div class="column has-text-centered">
         <video 
-          poster="static/images/ground_case1_without_poster.png" 
+          poster="static/images/ground_case1_source_poster.png" 
           controls 
           muted 
           loop 
           autoplay 
           preload="metadata"
-          style="width: 100%; border-radius: 6px;">
+          class="result-video">
+          <source src="static/videos/catsource.mp4" type="video/mp4">
+        </video>
+        <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">Source</p>
+      </div>
+      <!-- Ours视频 -->
+      <div class="column has-text-centered">
+        <video 
+          poster="static/images/ground_case1_ours_poster.png" 
+          controls 
+          muted 
+          loop 
+          autoplay 
+          preload="metadata"
+          class="result-video">
           <source src="static/videos/catours.mp4" type="video/mp4">
         </video>
         <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">Ours</p>
       </div>
-      <!-- With Ground Adaptation -->
-      <div class="column">
+      <!-- VidToMe视频 -->
+      <div class="column has-text-centered">
         <video 
-          poster="static/images/ground_case1_with_poster.png" 
+          poster="static/images/ground_case1_vidtome_poster.png" 
           controls 
           muted 
           loop 
           autoplay 
           preload="metadata"
-          style="width: 100%; border-radius: 6px;">
+          class="result-video">
           <source src="static/videos/tigervidtome.mp4" type="video/mp4">
         </video>
         <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">VidToMe</p>
       </div>
     </div>
 
-     <!-- With Ground Adaptation -->
-      <div class="column">
+    <!-- Case 2: Man To Superman -->
+    <div class="columns is-vcentered is-centered" style="margin-top: 40px; margin-bottom: 40px;">
+      <!-- 左侧竖排Case标签 -->
+      <div class="column is-1 has-text-centered case-label">
+        <p>“Man” To “Superman”</p>
+      </div>
+      <!-- Source视频 -->
+      <div class="column has-text-centered">
         <video 
-          poster="static/images/ground_case1_with_poster.png" 
+          poster="static/images/ground_case2_source_poster.png" 
           controls 
           muted 
           loop 
           autoplay 
           preload="metadata"
-          style="width: 100%; border-radius: 6px;">
-          <source src="static/videos/catxx.mp4" type="video/mp4">
+          class="result-video">
+          <source src="static/videos/manrunsource.mp4" type="video/mp4">
         </video>
-        <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">xx</p>
+        <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">Source</p>
       </div>
-    </div>
-
-
-  <!-- Case 3 -->
-    <div class="columns is-vcentered is-centered" style="margin-bottom: 20px;">
-      <!-- Case Label -->
-      <div class="column is-1 has-text-centered">
-        <p style="writing-mode: vertical-rl; text-orientation: mixed; font-weight: 600; font-size: 16px;">“Man”  To  “Superman”</p>
-      </div>
-      <!-- Without Ground Adaptation -->
-      <div class="column">
+      <!-- Ours视频 -->
+      <div class="column has-text-centered">
         <video 
-          poster="static/images/ground_case2_without_poster.png" 
+          poster="static/images/ground_case2_ours_poster.png" 
           controls 
           muted 
           loop 
           autoplay 
           preload="metadata"
-          style="width: 100%; border-radius: 6px;">
+          class="result-video">
           <source src="static/videos/manrun.mp4" type="video/mp4">
         </video>
         <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">Ours</p>
       </div>
-      <!-- With Ground Adaptation -->
-      <div class="column">
+      <!-- VidToMe视频 -->
+      <div class="column has-text-centered">
         <video 
-          poster="static/images/ground_case2_with_poster.png" 
+          poster="static/images/ground_case2_vidtome_poster.png" 
           controls 
           muted 
           loop 
           autoplay 
           preload="metadata"
-          style="width: 100%; border-radius: 6px;">
+          class="result-video">
           <source src="static/videos/manrunvidtome.mp4" type="video/mp4">
         </video>
         <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">VidToMe</p>
       </div>
-    </div>
-  
-      <div class="column">
-        <video 
-          poster="static/images/ground_case2_with_poster.png" 
-          controls 
-          muted 
-          loop 
-          autoplay 
-          preload="metadata"
-          style="width: 100%; border-radius: 6px;">
-          <source src="static/videos/manrunxx.mp4" type="video/mp4">
-        </video>
-        <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">xx</p>
-      </div>
-    </div>  
-  
+      <!-- xx视频 -->
+ 
 
-    <!-- Case 2 -->
-    <div class="columns is-vcentered is-centered" style="margin-bottom: 20px;">
-      <!-- Case Label -->
-      <div class="column is-1 has-text-centered">
-        <p style="writing-mode: vertical-rl; text-orientation: mixed; font-weight: 600; font-size: 16px;">To  “Autumn-colored”</p>
+    <!-- Case 3: To Autumn-colored -->
+    <div class="columns is-vcentered is-centered" style="margin-top: 40px; margin-bottom: 20px;">
+      <!-- 左侧竖排Case标签 -->
+      <div class="column is-1 has-text-centered case-label">
+        <p>To “Autumn-colored”</p>
       </div>
-      <!-- Without Ground Adaptation -->
-      <div class="column">
+      <!-- Source视频 -->
+      <div class="column has-text-centered">
         <video 
-          poster="static/images/ground_case2_without_poster.png" 
+          poster="static/images/ground_case3_source_poster.png" 
           controls 
           muted 
           loop 
           autoplay 
           preload="metadata"
-          style="width: 80%; max-width: 6px;">
+          class="result-video">
+          <source src="static/videos/bikesource.mp4" type="video/mp4">
+        </video>
+        <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">Source</p>
+      </div>
+      <!-- Ours视频 -->
+      <div class="column has-text-centered">
+        <video 
+          poster="static/images/ground_case3_ours_poster.png" 
+          controls 
+          muted 
+          loop 
+          autoplay 
+          preload="metadata"
+          class="result-video">
           <source src="static/videos/bikeours.mp4" type="video/mp4">
         </video>
         <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">Ours</p>
       </div>
-      <!-- With Ground Adaptation -->
-      <div class="column">
+      <!-- VidToMe视频 -->
+      <div class="column has-text-centered">
         <video 
-          poster="static/images/ground_case2_with_poster.png" 
+          poster="static/images/ground_case3_vidtome_poster.png" 
           controls 
           muted 
           loop 
           autoplay 
           preload="metadata"
-          style="width: 100%; max-width: 6px;">
+          class="result-video">
           <source src="static/videos/bikevidtome.mp4" type="video/mp4">
         </video>
         <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">VidToMe</p>
       </div>
-    </div>
-  
-      <div class="column">
-        <video 
-          poster="static/images/ground_case2_with_poster.png" 
-          controls 
-          muted 
-          loop 
-          autoplay 
-          preload="metadata"
-          style="width: 100%; max-width: 6px;">
-          <source src="static/videos/bikexx.mp4" type="video/mp4">
-        </video>
-        <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">xx</p>
-      </div>
-    </div>  
+      <!-- xx视频 -->
 
-
-
-
-  
-    
-
-    <!-- Caption Text -->
-    <div class="content has-text-justified" style="margin-top: 15px;">
-      <p>-Experiment 1.</p>
-    </div>
-  </div>
 </section>
-<!-- End Ablation Experiment 1 -->
+<!-- End Experiment 1 -->
 
-<!-- Ablation Experiment 2: Viewpoint-Adaptive Scene Guided Fusion -->
+<!-- Experiment 2 -->
 <section class="section">
   <div class="container is-max-desktop">
     <h2 class="title is-3">Experiment 2</h2>
@@ -379,11 +384,11 @@
     <!-- Case 1 -->
     <div class="columns is-vcentered is-centered" style="margin-top: 30px; margin-bottom: 40px;">
       <!-- Case Label -->
-      <div class="column is-1 has-text-centered">
-        <p style="writing-mode: vertical-rl; text-orientation: mixed; font-weight: 600; font-size: 16px;">case-1</p>
+      <div class="column is-1 has-text-centered case-label">
+        <p>case-1</p>
       </div>
       <!-- Without Viewpoint Guidance -->
-      <div class="column">
+      <div class="column has-text-centered">
         <video 
           poster="static/images/viewpoint_case1_without_poster.png" 
           controls 
@@ -391,13 +396,13 @@
           loop 
           autoplay 
           preload="metadata"
-          style="width: 100%; border-radius: 6px;">
+          class="result-video">
           <source src="static/videos/viewpoint_case1_without.mp4" type="video/mp4">
         </video>
         <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">Without viewpoint-adaptive scene guidance</p>
       </div>
       <!-- With Viewpoint Guidance -->
-      <div class="column">
+      <div class="column has-text-centered">
         <video 
           poster="static/images/viewpoint_case1_with_poster.png" 
           controls 
@@ -405,7 +410,7 @@
           loop 
           autoplay 
           preload="metadata"
-          style="width: 100%; border-radius: 6px;">
+          class="result-video">
           <source src="static/videos/viewpoint_case1_with.mp4" type="video/mp4">
         </video>
         <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">With viewpoint-adaptive scene guidance</p>
@@ -415,11 +420,11 @@
     <!-- Case 2 -->
     <div class="columns is-vcentered is-centered" style="margin-bottom: 40px;">
       <!-- Case Label -->
-      <div class="column is-1 has-text-centered">
-        <p style="writing-mode: vertical-rl; text-orientation: mixed; font-weight: 600; font-size: 16px;">case-2</p>
+      <div class="column is-1 has-text-centered case-label">
+        <p>case-2</p>
       </div>
       <!-- Input Reference -->
-      <div class="column">
+      <div class="column has-text-centered">
         <video 
           poster="static/images/viewpoint_case2_input_poster.png" 
           controls 
@@ -427,13 +432,13 @@
           loop 
           autoplay 
           preload="metadata"
-          style="width: 100%; border-radius: 6px;">
+          class="result-video">
           <source src="static/videos/viewpoint_case2_input.mp4" type="video/mp4">
         </video>
         <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">Input Reference</p>
       </div>
       <!-- Without Viewpoint Guidance -->
-      <div class="column">
+      <div class="column has-text-centered">
         <video 
           poster="static/images/viewpoint_case2_without_poster.png" 
           controls 
@@ -441,13 +446,13 @@
           loop 
           autoplay 
           preload="metadata"
-          style="width: 100%; border-radius: 6px;">
+          class="result-video">
           <source src="static/videos/viewpoint_case2_without.mp4" type="video/mp4">
         </video>
         <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">Without viewpoint-adaptive scene guidance</p>
       </div>
       <!-- With Viewpoint Guidance -->
-      <div class="column">
+      <div class="column has-text-centered">
         <video 
           poster="static/images/viewpoint_case2_with_poster.png" 
           controls 
@@ -455,22 +460,21 @@
           loop 
           autoplay 
           preload="metadata"
-          style="width: 100%; border-radius: 6px;">
+          class="result-video">
           <source src="static/videos/viewpoint_case2_with.mp4" type="video/mp4">
         </video>
         <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">With viewpoint-adaptive scene guidance</p>
       </div>
     </div>
 
-    <!-- Optional: Add more cases if needed -->
-    <!-- Case 3 (Extra Case from your reference image) -->
+    <!-- Case 3 -->
     <div class="columns is-vcentered is-centered">
       <!-- Case Label -->
-      <div class="column is-1 has-text-centered">
-        <p style="writing-mode: vertical-rl; text-orientation: mixed; font-weight: 600; font-size: 16px;">case-3</p>
+      <div class="column is-1 has-text-centered case-label">
+        <p>case-3</p>
       </div>
       <!-- Input Reference -->
-      <div class="column">
+      <div class="column has-text-centered">
         <video 
           poster="static/images/viewpoint_case3_input_poster.png" 
           controls 
@@ -478,13 +482,13 @@
           loop 
           autoplay 
           preload="metadata"
-          style="width: 100%; border-radius: 6px;">
+          class="result-video">
           <source src="static/videos/viewpoint_case3_input.mp4" type="video/mp4">
         </video>
         <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">Input Reference</p>
       </div>
       <!-- Without Viewpoint Guidance -->
-      <div class="column">
+      <div class="column has-text-centered">
         <video 
           poster="static/images/viewpoint_case3_without_poster.png" 
           controls 
@@ -492,13 +496,13 @@
           loop 
           autoplay 
           preload="metadata"
-          style="width: 100%; border-radius: 6px;">
+          class="result-video">
           <source src="static/videos/viewpoint_case3_without.mp4" type="video/mp4">
         </video>
         <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">Without viewpoint-adaptive scene guidance</p>
       </div>
       <!-- With Viewpoint Guidance -->
-      <div class="column">
+      <div class="column has-text-centered">
         <video 
           poster="static/images/viewpoint_case3_with_poster.png" 
           controls 
@@ -506,7 +510,7 @@
           loop 
           autoplay 
           preload="metadata"
-          style="width: 100%; border-radius: 6px;">
+          class="result-video">
           <source src="static/videos/viewpoint_case3_with.mp4" type="video/mp4">
         </video>
         <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">With viewpoint-adaptive scene guidance</p>
@@ -514,7 +518,7 @@
     </div>
   </div>
 </section>
-<!-- End Ablation Experiment 2 -->
+<!-- End Experiment 2 -->
 
   <footer class="footer">
   <div class="container">
