@@ -71,7 +71,7 @@
   </noscript>
   
   <!-- Fonts - Optimized loading -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght=400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
   <!-- Defer non-critical JavaScript -->
   <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -112,56 +112,8 @@
   }
   </script>
 
-  <!-- 全新布局样式：完全匹配参考图的学术风格+三列对照逻辑 -->
+  <!-- 全局视频统一样式 + 新增编辑结果布局样式 -->
   <style>
-    /* 模块标题：带左右分隔线，和参考图RAVE标题完全一致 */
-    .section-title-with-line {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      margin-bottom: 2rem;
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: #444;
-    }
-    .section-title-with-line::before,
-    .section-title-with-line::after {
-      content: '';
-      flex: 1;
-      height: 2px;
-      background-color: #444;
-      max-width: 300px;
-    }
-    .section-title-with-line::before {
-      margin-right: 1rem;
-    }
-    .section-title-with-line::after {
-      margin-left: 1rem;
-    }
-
-    /* 视频卡片统一样式：文本在上、视频在下，和参考图排版一致 */
-    .video-card {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-    }
-    .video-card .card-label {
-      font-size: 1.25rem;
-      font-weight: 500;
-      margin-bottom: 1rem;
-      color: #333;
-      text-align: center;
-    }
-    .video-card .prompt-label {
-      font-size: 1.4rem;
-      font-weight: 600;
-      color: #222;
-      text-align: center;
-      line-height: 1.4;
-    }
     .result-video {
       width: 100%;
       max-width: 280px;
@@ -170,12 +122,62 @@
       border-radius: 6px;
       margin: 0 auto;
       display: block;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
-
-    /* 案例行间距控制，纵向堆叠更清晰 */
-    .result-row {
-      margin-bottom: 3.5rem;
+    .case-label {
+      align-self: center;
+    }
+    .case-label p {
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      font-weight: 600;
+      font-size: 16px;
+      margin: 0;
+    }
+    /* 新增：TSPVE编辑结果标题样式 */
+    .editing-results-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+    .editing-results-header hr {
+      flex: 1;
+      border: none;
+      border-top: 2px solid #333;
+      margin: 0 1rem;
+    }
+    .editing-results-header h2 {
+      font-size: 2.5rem;
+      font-weight: 600;
+      margin: 0;
+      white-space: nowrap;
+    }
+    .supplementary-link {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 1.2rem;
+    }
+    /* 新增：结果卡片样式 */
+    .result-card {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .result-card .card-title {
+      font-size: 1.3rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      min-height: 3.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1.3;
+    }
+    .result-card .card-media {
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+      object-fit: cover;
     }
   </style>
 </head>
@@ -274,245 +276,323 @@
 </section>
 <!-- End Method Overview -->
 
-<!-- ========== 核心修改：TSPVE Editing Results 成果展示区 ========== -->
+<!-- 重构后的 TSPVE Editing Results 模块 -->
 <section class="section hero is-light">
   <div class="container is-max-desktop">
-    <!-- 模块标题：和参考图RAVE标题样式完全一致 -->
-    <h2 class="section-title-with-line">TSPVE Editing Results</h2>
-    <!-- 补充材料链接（和参考图一致，不需要可直接删除） -->
-    <p class="has-text-centered" style="margin-bottom: 2.5rem; font-size: 1.15rem;">
+    <!-- 主标题：两侧横线+居中标题 -->
+    <div class="editing-results-header">
+      <hr>
+      <h2>TSPVE Editing Results</h2>
+      <hr>
+    </div>
+    <!-- 补充说明与链接 -->
+    <div class="supplementary-link">
       For more results please see the supplementary material: <a href="static/pdfs/supplementary.pdf" target="_blank">Supplementary</a>
-    </p>
+    </div>
 
-    <!-- 案例1：Cat → Tiger 独立行，三列对照布局 -->
-    <div class="columns is-vcentered is-centered result-row">
-      <!-- 左列：原始输入视频（文本在上，视频在下） -->
-      <div class="column">
-        <div class="video-card">
-          <p class="card-label">Input Video</p>
+    <!-- 第一行结果：打字人物场景 -->
+    <div class="columns is-vcentered is-centered">
+      <!-- 输入视频 -->
+      <div class="column is-3">
+        <div class="result-card">
+          <div class="card-title">Input Video</div>
           <video 
-            poster="static/images/ground_case1_source_poster.png" 
+            poster="static/images/input_typing_man_poster.png" 
             controls 
             muted 
             loop 
             autoplay 
             preload="metadata"
-            class="result-video">
-            <source src="static/videos/catsource.mp4" type="video/mp4">
+            class="card-media result-video">
+            <source src="static/videos/typing_man_input.mp4" type="video/mp4">
           </video>
         </div>
       </div>
-
-      <!-- 中列：编辑指令文本提示 -->
-      <div class="column">
-        <div class="video-card">
-          <p class="prompt-label">"Cat" To "Tiger"</p>
-        </div>
-      </div>
-
-      <!-- 右列：TSPVE编辑输出视频（文本在上，视频在下） -->
-      <div class="column">
-        <div class="video-card">
-          <p class="card-label">Ours (TSPVE)</p>
+      <!-- 编辑结果1 -->
+      <div class="column is-3">
+        <div class="result-card">
+          <div class="card-title">"An ancient Egyptian pharaoh is typing"</div>
           <video 
-            poster="static/images/ground_case1_ours_poster.png" 
+            poster="static/images/result_pharaoh_poster.png" 
             controls 
             muted 
             loop 
             autoplay 
             preload="metadata"
-            class="result-video">
-            <source src="static/videos/catours2.mp4" type="video/mp4">
+            class="card-media result-video">
+            <source src="static/videos/typing_pharaoh.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <!-- 编辑结果2 -->
+      <div class="column is-3">
+        <div class="result-card">
+          <div class="card-title">"A medieval knight"</div>
+          <video 
+            poster="static/images/result_knight_poster.png" 
+            controls 
+            muted 
+            loop 
+            autoplay 
+            preload="metadata"
+            class="card-media result-video">
+            <source src="static/videos/typing_knight.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <!-- 编辑结果3 -->
+      <div class="column is-3">
+        <div class="result-card">
+          <div class="card-title">"A zombie is typing"</div>
+          <video 
+            poster="static/images/result_zombie_poster.png" 
+            controls 
+            muted 
+            loop 
+            autoplay 
+            preload="metadata"
+            class="card-media result-video">
+            <source src="static/videos/typing_zombie.mp4" type="video/mp4">
           </video>
         </div>
       </div>
     </div>
 
-    <!-- 案例2：Man → Superman 独立行，三列对照布局 -->
-    <div class="columns is-vcentered is-centered result-row">
-      <!-- 左列：原始输入视频 -->
-      <div class="column">
-        <div class="video-card">
-          <p class="card-label">Input Video</p>
+    <!-- 第二行结果：狼场景 -->
+    <div class="columns is-vcentered is-centered">
+      <!-- 输入视频 -->
+      <div class="column is-3">
+        <div class="result-card">
+          <div class="card-title">Input Video</div>
           <video 
-            poster="static/images/ground_case2_source_poster.png" 
+            poster="static/images/input_wolf_poster.png" 
             controls 
             muted 
             loop 
             autoplay 
             preload="metadata"
-            class="result-video">
-            <source src="static/videos/manrunsource.mp4" type="video/mp4">
+            class="card-media result-video">
+            <source src="static/videos/wolf_input.mp4" type="video/mp4">
           </video>
         </div>
       </div>
-
-      <!-- 中列：编辑指令文本提示 -->
-      <div class="column">
-        <div class="video-card">
-          <p class="prompt-label">"Man" To "Superman"</p>
-        </div>
-      </div>
-
-      <!-- 右列：TSPVE编辑输出视频 -->
-      <div class="column">
-        <div class="video-card">
-          <p class="card-label">Ours (TSPVE)</p>
+      <!-- 编辑结果1 -->
+      <div class="column is-3">
+        <div class="result-card">
+          <div class="card-title">"A dinosaur"</div>
           <video 
-            poster="static/images/ground_case2_ours_poster.png" 
+            poster="static/images/result_dinosaur_poster.png" 
             controls 
             muted 
             loop 
             autoplay 
             preload="metadata"
-            class="result-video">
-            <source src="static/videos/manrun.mp4" type="video/mp4">
+            class="card-media result-video">
+            <source src="static/videos/wolf_to_dinosaur.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <!-- 编辑结果2 -->
+      <div class="column is-3">
+        <div class="result-card">
+          <div class="card-title">"A black panther"</div>
+          <video 
+            poster="static/images/result_panther_poster.png" 
+            controls 
+            muted 
+            loop 
+            autoplay 
+            preload="metadata"
+            class="card-media result-video">
+            <source src="static/videos/wolf_to_panther.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <!-- 编辑结果3 -->
+      <div class="column is-3">
+        <div class="result-card">
+          <div class="card-title">"A shiny silver robotic wolf, futuristic"</div>
+          <video 
+            poster="static/images/result_robot_wolf_poster.png" 
+            controls 
+            muted 
+            loop 
+            autoplay 
+            preload="metadata"
+            class="card-media result-video">
+            <source src="static/videos/wolf_to_robot.mp4" type="video/mp4">
           </video>
         </div>
       </div>
     </div>
 
-    <!-- 案例3：To Autumn-colored 独立行，三列对照布局 -->
-    <div class="columns is-vcentered is-centered result-row">
-      <!-- 左列：原始输入视频 -->
-      <div class="column">
-        <div class="video-card">
-          <p class="card-label">Input Video</p>
+    <!-- 第三行结果：可自定义扩展 -->
+    <div class="columns is-vcentered is-centered">
+      <!-- 输入视频 -->
+      <div class="column is-3">
+        <div class="result-card">
+          <div class="card-title">Input Video</div>
           <video 
-            poster="static/images/ground_case3_source_poster.png" 
+            poster="static/images/input_cupcake_poster.png" 
             controls 
             muted 
             loop 
             autoplay 
             preload="metadata"
-            class="result-video">
-            <source src="static/videos/bikesource.mp4" type="video/mp4">
+            class="card-media result-video">
+            <source src="static/videos/cupcake_input.mp4" type="video/mp4">
           </video>
         </div>
       </div>
-
-      <!-- 中列：编辑指令文本提示 -->
-      <div class="column">
-        <div class="video-card">
-          <p class="prompt-label">To "Autumn-colored"</p>
-        </div>
-      </div>
-
-      <!-- 右列：TSPVE编辑输出视频 -->
-      <div class="column">
-        <div class="video-card">
-          <p class="card-label">Ours (TSPVE)</p>
+      <!-- 编辑结果1 -->
+      <div class="column is-3">
+        <div class="result-card">
+          <div class="card-title">"White cupcakes"</div>
           <video 
-            poster="static/images/ground_case3_ours_poster.png" 
+            poster="static/images/result_white_cupcake_poster.png" 
             controls 
             muted 
             loop 
             autoplay 
             preload="metadata"
-            class="result-video">
-            <source src="static/videos/bikeours.mp4" type="video/mp4">
+            class="card-media result-video">
+            <source src="static/videos/cupcake_white.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <!-- 编辑结果2 -->
+      <div class="column is-3">
+        <div class="result-card">
+          <div class="card-title">"Swarovski blue crystal"</div>
+          <video 
+            poster="static/images/result_crystal_cupcake_poster.png" 
+            controls 
+            muted 
+            loop 
+            autoplay 
+            preload="metadata"
+            class="card-media result-video">
+            <source src="static/videos/cupcake_crystal.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <!-- 编辑结果3 -->
+      <div class="column is-3">
+        <div class="result-card">
+          <div class="card-title">"A train moving on the track"</div>
+          <video 
+            poster="static/images/result_train_poster.png" 
+            controls 
+            muted 
+            loop 
+            autoplay 
+            preload="metadata"
+            class="card-media result-video">
+            <source src="static/videos/train_result.mp4" type="video/mp4">
           </video>
         </div>
       </div>
     </div>
 
     <!-- 底部说明文本 -->
-    <div class="content has-text-justified" style="margin-top: 1rem;">
-      <p>Qualitative comparison of zero-shot video editing results on real-world videos. Our TSPVE method preserves the original temporal structure while achieving accurate text-guided modifications.</p>
+    <div class="content has-text-justified" style="margin-top: 10px;">
+      <p>Qualitative comparison of zero-shot video editing results on real-world videos using our TSPVE method.</p>
     </div>
   </div>
 </section>
-<!-- ========== 成果展示区修改结束 ========== -->
+<!-- End TSPVE Editing Results -->
 
-<!-- Experiment 2 消融实验区（保留原结构，仅适配全局样式） -->
+<!-- Experiment 2 -->
 <section class="section">
   <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">Ablation Experiment</h2>
+    <h2 class="title is-3">Ablation Experiment</h2>
     
+  
+
     <!-- Case 1 -->
     <div class="columns is-vcentered is-centered" style="margin-bottom: 40px;">
+      <!-- Case Label -->
+      <div class="column is-1 has-text-centered case-label">
+        <p></p>
+      </div>
       <!-- Input Reference -->
       <div class="column has-text-centered">
-        <div class="video-card">
-          <p class="card-label">Input Reference</p>
-          <video 
-            poster="static/images/viewpoint_case2_input_poster.png" 
-            controls 
-            muted 
-            loop 
-            autoplay 
-            preload="metadata"
-            class="result-video">
-            <source src="static/videos/packsource.mp4" type="video/mp4">
-          </video>
-        </div>
+        <video 
+          poster="static/images/viewpoint_case2_input_poster.png" 
+          controls 
+          muted 
+          loop 
+          autoplay 
+          preload="metadata"
+          class="result-video">
+          <source src="static/videos/packsource.mp4" type="video/mp4">
+        </video>
+        <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">Input Reference</p>
       </div>
 
+
       <div class="column has-text-centered">
-        <div class="video-card">
-          <p class="card-label">With Temporal Structure</p>
-          <video 
-            poster="static/images/viewpoint_case2_with_poster.png" 
-            controls 
-            muted 
-            loop 
-            autoplay 
-            preload="metadata"
-            class="result-video">
-            <source src="static/videos/packours.mp4" type="video/mp4">
-          </video>
-        </div>
+        <video 
+          poster="static/images/viewpoint_case2_with_poster.png" 
+          controls 
+          muted 
+          loop 
+          autoplay 
+          preload="metadata"
+          class="result-video">
+          <source src="static/videos/packours.mp4" type="video/mp4">
+        </video>
+        <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">With Temporal Structure</p>
       </div>
     </div>
 
     <!-- Case 2 -->
     <div class="columns is-vcentered is-centered">
+      <!-- Case Label -->
+      <div class="column is-1 has-text-centered case-label">
+        <p></p>
+      </div>
+      <!-- Input Reference -->
       <div class="column has-text-centered">
-        <div class="video-card">
-          <p class="card-label">Without Temporal Structure(shift ±3 Frames)</p>
-          <video 
-            poster="static/images/viewpoint_case2_without_poster.png" 
-            controls 
-            muted 
-            loop 
-            autoplay 
-            preload="metadata"
-            class="result-video">
-            <source src="static/videos/packxiaorong1.mp4" type="video/mp4">
-          </video>
-        </div>
+        <video 
+          poster="static/images/viewpoint_case2_without_poster.png" 
+          controls 
+          muted 
+          loop 
+          autoplay 
+          preload="metadata"
+          class="result-video">
+          <source src="static/videos/packxiaorong1.mp4" type="video/mp4">
+        </video>
+        <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">Without Temporal Structure(shift ±3 Frames)</p>
       </div>
 
       <div class="column has-text-centered">
-        <div class="video-card">
-          <p class="card-label">Without Temporal Structure(shift ±5 Frames)</p>
-          <video 
-            poster="static/images/viewpoint_case2_without_poster.png" 
-            controls 
-            muted 
-            loop 
-            autoplay 
-            preload="metadata"
-            class="result-video">
-            <source src="static/videos/packxiaorong2.mp4" type="video/mp4">
-          </video>
-        </div>
+        <video 
+          poster="static/images/viewpoint_case2_without_poster.png" 
+          controls 
+          muted 
+          loop 
+          autoplay 
+          preload="metadata"
+          class="result-video">
+          <source src="static/videos/packxiaorong2.mp4" type="video/mp4">
+        </video>
+        <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">Without Temporal Structure(shift ±5 Frames)</p>
       </div>
 
       <div class="column has-text-centered">
-        <div class="video-card">
-          <p class="card-label">Without Temporal Structure(shift ±7 Frames)</p>
-          <video 
-            poster="static/images/viewpoint_case2_without_poster.png" 
-            controls 
-            muted 
-            loop 
-            autoplay 
-            preload="metadata"
-            class="result-video">
-            <source src="static/videos/packxiaorong3.mp4" type="video/mp4">
-          </video>
-        </div>
+        <video 
+          poster="static/images/viewpoint_case2_without_poster.png" 
+          controls 
+          muted 
+          loop 
+          autoplay 
+          preload="metadata"
+          class="result-video">
+          <source src="static/videos/packxiaorong3.mp4" type="video/mp4">
+        </video>
+        <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">Without Temporal Structure(shift ±7 Frames)</p>
       </div>
     </div>
   </div>
