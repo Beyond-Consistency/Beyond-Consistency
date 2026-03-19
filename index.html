@@ -71,7 +71,7 @@
   </noscript>
   
   <!-- Fonts - Optimized loading -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght=400;500;600;700;800&display=swap" rel="stylesheet">
   
   <!-- Defer non-critical JavaScript -->
   <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -112,7 +112,7 @@
   }
   </script>
 
-  <!-- 全局视频统一样式 + 新增编辑结果布局样式 -->
+  <!-- 全局样式 + 新增编辑结果/对比结果布局样式 -->
   <style>
     .result-video {
       width: 100%;
@@ -133,7 +133,7 @@
       font-size: 16px;
       margin: 0;
     }
-    /* 新增：TSPVE编辑结果标题样式 */
+    /* 编辑结果标题样式（复用给对比模块） */
     .editing-results-header {
       display: flex;
       align-items: center;
@@ -158,7 +158,7 @@
       margin-bottom: 2rem;
       font-size: 1.2rem;
     }
-    /* 新增：结果卡片样式 */
+    /* 编辑结果卡片样式 */
     .result-card {
       text-align: center;
       margin-bottom: 2rem;
@@ -178,6 +178,43 @@
       height: auto;
       border-radius: 6px;
       object-fit: cover;
+    }
+    /* 新增：对比结果卡片样式（适配8列窄布局） */
+    .comparison-card {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    .comparison-card .card-title {
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-bottom: 0.8rem;
+      min-height: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1.2;
+    }
+    .comparison-card .card-media {
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+      object-fit: cover;
+    }
+    .comparison-video {
+      width: 100%;
+      max-width: 180px;
+      height: auto;
+      object-fit: contain;
+      border-radius: 4px;
+      margin: 0 auto;
+      display: block;
+    }
+    /* 8列等宽栅格适配 */
+    @media screen and (min-width: 1088px) {
+      .columns.is-8-columns > .column {
+        flex: 0 0 12.5%;
+        max-width: 12.5%;
+      }
     }
   </style>
 </head>
@@ -502,8 +539,226 @@
 </section>
 <!-- End TSPVE Editing Results -->
 
-<!-- Experiment 2 -->
+<!-- 新增：Comparisons 对比模块（完全复刻参考图布局） -->
 <section class="section">
+  <div class="container is-max-widescreen">
+    <!-- 主标题：两侧横线+居中标题，和参考图完全一致 -->
+    <div class="editing-results-header">
+      <hr>
+      <h2>Comparisons</h2>
+      <hr>
+    </div>
+
+    <!-- 第一行对比：车辆场景（适配你原有的AdaFlow/RAVE等方法） -->
+    <div class="columns is-vcentered is-centered is-8-columns is-multiline">
+      <!-- 1. Input video -->
+      <div class="column is-12-mobile is-6-tablet">
+        <div class="comparison-card">
+          <div class="card-title">Input video</div>
+          <video 
+            poster="static/images/comparison_car_input_poster.png" 
+            controls 
+            muted 
+            loop 
+            autoplay 
+            preload="metadata"
+            class="card-media comparison-video">
+            <source src="static/videos/carsource.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <!-- 2. TSPVE (Ours) -->
+      <div class="column is-12-mobile is-6-tablet">
+        <div class="comparison-card">
+          <div class="card-title">TSPVE (Ours)</div>
+          <video 
+            poster="static/images/comparison_car_ours_poster.png" 
+            controls 
+            muted 
+            loop 
+            autoplay 
+            preload="metadata"
+            class="card-media comparison-video">
+            <source src="static/videos/carours.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <!-- 3. RAVE -->
+      <div class="column is-12-mobile is-6-tablet">
+        <div class="comparison-card">
+          <div class="card-title">RAVE</div>
+          <video 
+            poster="static/images/comparison_car_rave_poster.png" 
+            controls 
+            muted 
+            loop 
+            autoplay 
+            preload="metadata"
+            class="card-media comparison-video">
+            <source src="static/videos/carrave.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <!-- 6. VidToMe [3] -->
+      <div class="column is-12-mobile is-6-tablet">
+        <div class="comparison-card">
+          <div class="card-title">VidToMe [3]</div>
+          <video 
+            poster="static/images/comparison_car_vidtome_poster.png" 
+            controls 
+            muted 
+            loop 
+            autoplay 
+            preload="metadata"
+            class="card-media comparison-video">
+            <source src="static/videos/carvidtome.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <!-- 7. AdaFlow [4] -->
+      <div class="column is-12-mobile is-6-tablet">
+        <div class="comparison-card">
+          <div class="card-title">AdaFlow [4]</div>
+          <video 
+            poster="static/images/comparison_car_adaflow_poster.png" 
+            controls 
+            muted 
+            loop 
+            autoplay 
+            preload="metadata"
+            class="card-media comparison-video">
+            <source src="static/videos/caradaflow.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <!-- 8. Slicedit [5] -->
+      <div class="column is-12-mobile is-6-tablet">
+        <div class="comparison-card">
+          <div class="card-title">Slicedit [5]</div>
+          <video 
+            poster="static/images/comparison_car_slicedit_poster.png" 
+            controls 
+            muted 
+            loop 
+            autoplay 
+            preload="metadata"
+            class="card-media comparison-video">
+            <source src="static/videos/carslicedit.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+
+    <!-- 第二行对比：卡车场景（和参考图第二行结构一致） -->
+    <div class="columns is-vcentered is-centered is-8-columns is-multiline" style="margin-top: 10px;">
+      <!-- 1. Input video -->
+      <div class="column is-12-mobile is-6-tablet">
+        <div class="comparison-card">
+          <div class="card-title">Input video</div>
+          <video 
+            poster="static/images/comparison_truck_input_poster.png" 
+            controls 
+            muted 
+            loop 
+            autoplay 
+            preload="metadata"
+            class="card-media comparison-video">
+            <source src="static/videos/trucksource.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <!-- 2. TSPVE (Ours) -->
+      <div class="column is-12-mobile is-6-tablet">
+        <div class="comparison-card">
+          <div class="card-title">TSPVE (Ours)</div>
+          <video 
+            poster="static/images/comparison_truck_ours_poster.png" 
+            controls 
+            muted 
+            loop 
+            autoplay 
+            preload="metadata"
+            class="card-media comparison-video">
+            <source src="static/videos/truckours.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+<!-- 3. RAVE -->
+      <div class="column is-12-mobile is-6-tablet">
+        <div class="comparison-card">
+          <div class="card-title">RAVE</div>
+          <video 
+            poster="static/images/comparison_car_rave_poster.png" 
+            controls 
+            muted 
+            loop 
+            autoplay 
+            preload="metadata"
+            class="card-media comparison-video">
+            <source src="static/videos/carrave.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <!-- 6. VidToMe [3] -->
+      <div class="column is-12-mobile is-6-tablet">
+        <div class="comparison-card">
+          <div class="card-title">VidToMe [3]</div>
+          <video 
+            poster="static/images/comparison_car_vidtome_poster.png" 
+            controls 
+            muted 
+            loop 
+            autoplay 
+            preload="metadata"
+            class="card-media comparison-video">
+            <source src="static/videos/carvidtome.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <!-- 7. AdaFlow [4] -->
+      <div class="column is-12-mobile is-6-tablet">
+        <div class="comparison-card">
+          <div class="card-title">AdaFlow [4]</div>
+          <video 
+            poster="static/images/comparison_car_adaflow_poster.png" 
+            controls 
+            muted 
+            loop 
+            autoplay 
+            preload="metadata"
+            class="card-media comparison-video">
+            <source src="static/videos/caradaflow.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <!-- 8. Slicedit [5] -->
+      <div class="column is-12-mobile is-6-tablet">
+        <div class="comparison-card">
+          <div class="card-title">Slicedit [5]</div>
+          <video 
+            poster="static/images/comparison_car_slicedit_poster.png" 
+            controls 
+            muted 
+            loop 
+            autoplay 
+            preload="metadata"
+            class="card-media comparison-video">
+            <source src="static/videos/carslicedit.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+
+    <!-- 底部说明文本 -->
+    <div class="content has-text-justified" style="margin-top: 10px;">
+      <p>Qualitative comparison with state-of-the-art zero-shot video editing methods. Our TSPVE method preserves the original temporal structure and achieves superior editing fidelity compared to competing approaches.</p>
+    </div>
+  </div>
+</section>
+<!-- End Comparisons 对比模块 -->
+
+<!-- Experiment 2 -->
+<section class="section hero is-light">
   <div class="container is-max-desktop">
     <h2 class="title is-3">Ablation Experiment</h2>
     
