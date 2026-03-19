@@ -230,321 +230,126 @@
 </section>
 <!-- End Method Overview -->
 
-<!-- Experiment 1 -->
+<!-- TSPVE Editing Results (原 Experiment 1 重构) -->
 <section class="section hero is-light">
   <div class="container is-max-desktop">
-    <h2 class="title is-3">Experiment 1</h2>
+    <h2 class="title is-3 has-text-centered">TSPVE Editing Results</h2>
     
     <!-- Case 1: Cat To Tiger -->
-    <div class="columns is-centered" style="margin-top: 40px; margin-bottom: 40px;">
-      <!-- 左侧竖排Case标签（垂直居中匹配两行视频） -->
-      <div class="column is-1 has-text-centered case-label">
-        <p>“Cat” To “Tiger”</p>
+    <div class="columns is-vcentered is-centered" style="margin-top: 40px; margin-bottom: 40px;">
+      <!-- 左侧：输入视频 -->
+      <div class="column has-text-centered">
+        <video 
+          poster="static/images/ground_case1_source_poster.png" 
+          controls 
+          muted 
+          loop 
+          autoplay 
+          preload="metadata"
+          class="result-video">
+          <source src="static/videos/catsource.mp4" type="video/mp4">
+        </video>
+        <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">Input</p>
       </div>
-      <!-- 右侧两行视频容器 -->
-      <div class="column">
-        <!-- 第一行：Source / Ours / VidToMe -->
-        <div class="columns is-vcentered is-centered" style="margin-bottom: 25px;">
-          <!-- Source视频 -->
-          <div class="column has-text-centered">
-            <video 
-              poster="static/images/ground_case1_source_poster.png" 
-              controls 
-              muted 
-              loop 
-              autoplay 
-              preload="metadata"
-              class="result-video">
-              <source src="static/videos/catsource.mp4" type="video/mp4">
-            </video>
-            <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">Source</p>
-          </div>
-          <!-- Ours视频 -->
-          <div class="column has-text-centered">
-            <video 
-              poster="static/images/ground_case1_ours_poster.png" 
-              controls 
-              muted 
-              loop 
-              autoplay 
-              preload="metadata"
-              class="result-video">
-              <source src="static/videos/catours2.mp4" type="video/mp4">
-            </video>
-            <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">Ours</p>
-          </div>
-          <!-- VidToMe视频 -->
-          <div class="column has-text-centered">
-            <video 
-              poster="static/images/ground_case1_vidtome_poster.png" 
-              controls 
-              muted 
-              loop 
-              autoplay 
-              preload="metadata"
-              class="result-video">
-              <source src="static/videos/tigervidtome.mp4" type="video/mp4">
-            </video>
-            <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">VidToMe</p>
-          </div>
-        </div>
-        <!-- 第二行：AdaFlow / RAVE / Slicedit -->
-        <div class="columns is-vcentered is-centered">
-          <!-- AdaFlow视频 -->
-          <div class="column has-text-centered">
-            <video 
-              poster="static/images/ground_case1_adaflow_poster.png" 
-              controls 
-              muted 
-              loop 
-              autoplay 
-              preload="metadata"
-              class="result-video">
-              <source src="static/videos/catadaflow.mp4" type="video/mp4">
-            </video>
-            <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">AdaFlow</p>
-          </div>
-          <!-- RAVE视频 -->
-          <div class="column has-text-centered">
-            <video 
-              poster="static/images/ground_case1_rave_poster.png" 
-              controls 
-              muted 
-              loop 
-              autoplay 
-              preload="metadata"
-              class="result-video">
-              <source src="static/videos/catrave.mp4" type="video/mp4">
-            </video>
-            <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">RAVE</p>
-          </div>
-          <!-- Slicedit视频 -->
-          <div class="column has-text-centered">
-            <video 
-              poster="static/images/ground_case1_slicedit_poster.png" 
-              controls 
-              muted 
-              loop 
-              autoplay 
-              preload="metadata"
-              class="result-video">
-              <source src="static/videos/catours.mp4" type="video/mp4">
-            </video>
-            <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">Slicedit</p>
-          </div>
-        </div>
+      <!-- 中间：文本提示 -->
+      <div class="column has-text-centered">
+        <p class="title is-4" style="font-weight: 600;">“Cat” To “Tiger”</p>
+      </div>
+      <!-- 右侧：输出视频 -->
+      <div class="column has-text-centered">
+        <video 
+          poster="static/images/ground_case1_ours_poster.png" 
+          controls 
+          muted 
+          loop 
+          autoplay 
+          preload="metadata"
+          class="result-video">
+          <source src="static/videos/catours2.mp4" type="video/mp4">
+        </video>
+        <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">Ours (TSPVE)</p>
       </div>
     </div>
 
     <!-- Case 2: Man To Superman -->
-    <div class="columns is-centered" style="margin-top: 40px; margin-bottom: 40px;">
-      <!-- 左侧竖排Case标签 -->
-      <div class="column is-1 has-text-centered case-label">
-        <p>“Man” To “Superman”</p>
+    <div class="columns is-vcentered is-centered" style="margin-top: 40px; margin-bottom: 40px;">
+      <!-- 左侧：输入视频 -->
+      <div class="column has-text-centered">
+        <video 
+          poster="static/images/ground_case2_source_poster.png" 
+          controls 
+          muted 
+          loop 
+          autoplay 
+          preload="metadata"
+          class="result-video">
+          <source src="static/videos/manrunsource.mp4" type="video/mp4">
+        </video>
+        <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">Input</p>
       </div>
-      <!-- 右侧两行视频容器 -->
-      <div class="column">
-        <!-- 第一行：Source / Ours / VidToMe -->
-        <div class="columns is-vcentered is-centered" style="margin-bottom: 25px;">
-          <!-- Source视频 -->
-          <div class="column has-text-centered">
-            <video 
-              poster="static/images/ground_case2_source_poster.png" 
-              controls 
-              muted 
-              loop 
-              autoplay 
-              preload="metadata"
-              class="result-video">
-              <source src="static/videos/manrunsource.mp4" type="video/mp4">
-            </video>
-            <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">Source</p>
-          </div>
-          <!-- Ours视频 -->
-          <div class="column has-text-centered">
-            <video 
-              poster="static/images/ground_case2_ours_poster.png" 
-              controls 
-              muted 
-              loop 
-              autoplay 
-              preload="metadata"
-              class="result-video">
-              <source src="static/videos/manrun.mp4" type="video/mp4">
-            </video>
-            <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">Ours</p>
-          </div>
-          <!-- VidToMe视频 -->
-          <div class="column has-text-centered">
-            <video 
-              poster="static/images/ground_case2_vidtome_poster.png" 
-              controls 
-              muted 
-              loop 
-              autoplay 
-              preload="metadata"
-              class="result-video">
-              <source src="static/videos/manrunvidtome.mp4" type="video/mp4">
-            </video>
-            <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">VidToMe</p>
-          </div>
-        </div>
-        <!-- 第二行：AdaFlow / RAVE / Slicedit -->
-        <div class="columns is-vcentered is-centered">
-          <!-- AdaFlow视频 -->
-          <div class="column has-text-centered">
-            <video 
-              poster="static/images/ground_case2_adaflow_poster.png" 
-              controls 
-              muted 
-              loop 
-              autoplay 
-              preload="metadata"
-              class="result-video">
-              <source src="static/videos/manrunadaflow.mp4" type="video/mp4">
-            </video>
-            <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">AdaFlow</p>
-          </div>
-          <!-- RAVE视频 -->
-          <div class="column has-text-centered">
-            <video 
-              poster="static/images/ground_case2_rave_poster.png" 
-              controls 
-              muted 
-              loop 
-              autoplay 
-              preload="metadata"
-              class="result-video">
-              <source src="static/videos/manrunrave.mp4" type="video/mp4">
-            </video>
-            <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">RAVE</p>
-          </div>
-          <!-- Slicedit视频 -->
-          <div class="column has-text-centered">
-            <video 
-              poster="static/images/ground_case2_slicedit_poster.png" 
-              controls 
-              muted 
-              loop 
-              autoplay 
-              preload="metadata"
-              class="result-video">
-              <source src="static/videos/manrunSlicedit3.mp4" type="video/mp4">
-            </video>
-            <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">Slicedit</p>
-          </div>
-        </div>
+      <!-- 中间：文本提示 -->
+      <div class="column has-text-centered">
+        <p class="title is-4" style="font-weight: 600;">“Man” To “Superman”</p>
+      </div>
+      <!-- 右侧：输出视频 -->
+      <div class="column has-text-centered">
+        <video 
+          poster="static/images/ground_case2_ours_poster.png" 
+          controls 
+          muted 
+          loop 
+          autoplay 
+          preload="metadata"
+          class="result-video">
+          <source src="static/videos/manrun.mp4" type="video/mp4">
+        </video>
+        <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">Ours (TSPVE)</p>
       </div>
     </div>
 
     <!-- Case 3: To Autumn-colored -->
-    <div class="columns is-centered" style="margin-top: 40px; margin-bottom: 20px;">
-      <!-- 左侧竖排Case标签 -->
-      <div class="column is-1 has-text-centered case-label">
-        <p>To “Autumn-colored”</p>
+    <div class="columns is-vcentered is-centered" style="margin-top: 40px; margin-bottom: 20px;">
+      <!-- 左侧：输入视频 -->
+      <div class="column has-text-centered">
+        <video 
+          poster="static/images/ground_case3_source_poster.png" 
+          controls 
+          muted 
+          loop 
+          autoplay 
+          preload="metadata"
+          class="result-video">
+          <source src="static/videos/bikesource.mp4" type="video/mp4">
+        </video>
+        <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">Input</p>
       </div>
-      <!-- 右侧两行视频容器 -->
-      <div class="column">
-        <!-- 第一行：Source / Ours / VidToMe -->
-        <div class="columns is-vcentered is-centered" style="margin-bottom: 25px;">
-          <!-- Source视频 -->
-          <div class="column has-text-centered">
-            <video 
-              poster="static/images/ground_case3_source_poster.png" 
-              controls 
-              muted 
-              loop 
-              autoplay 
-              preload="metadata"
-              class="result-video">
-              <source src="static/videos/bikesource.mp4" type="video/mp4">
-            </video>
-            <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">Source</p>
-          </div>
-          <!-- Ours视频 -->
-          <div class="column has-text-centered">
-            <video 
-              poster="static/images/ground_case3_ours_poster.png" 
-              controls 
-              muted 
-              loop 
-              autoplay 
-              preload="metadata"
-              class="result-video">
-              <source src="static/videos/bikeours.mp4" type="video/mp4">
-            </video>
-            <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">Ours</p>
-          </div>
-          <!-- VidToMe视频 -->
-          <div class="column has-text-centered">
-            <video 
-              poster="static/images/ground_case3_vidtome_poster.png" 
-              controls 
-              muted 
-              loop 
-              autoplay 
-              preload="metadata"
-              class="result-video">
-              <source src="static/videos/bikevidtome.mp4" type="video/mp4">
-            </video>
-            <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">VidToMe</p>
-          </div>
-        </div>
-        <!-- 第二行：AdaFlow / RAVE / Slicedit -->
-        <div class="columns is-vcentered is-centered">
-          <!-- AdaFlow视频 -->
-          <div class="column has-text-centered">
-            <video 
-              poster="static/images/ground_case3_adaflow_poster.png" 
-              controls 
-              muted 
-              loop 
-              autoplay 
-              preload="metadata"
-              class="result-video">
-              <source src="static/videos/bikeadaflow.mp4" type="video/mp4">
-            </video>
-            <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">AdaFlow</p>
-          </div>
-          <!-- RAVE视频 -->
-          <div class="column has-text-centered">
-            <video 
-              poster="static/images/ground_case3_rave_poster.png" 
-              controls 
-              muted 
-              loop 
-              autoplay 
-              preload="metadata"
-              class="result-video">
-              <source src="static/videos/bikerave2.mp4" type="video/mp4">
-            </video>
-            <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">RAVE</p>
-          </div>
-          <!-- Slicedit视频 -->
-          <div class="column has-text-centered">
-            <video 
-              poster="static/images/ground_case3_slicedit_poster.png" 
-              controls 
-              muted 
-              loop 
-              autoplay 
-              preload="metadata"
-              class="result-video">
-              <source src="static/videos/bikeSlicedit.mp4" type="video/mp4">
-            </video>
-            <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">Slicedit</p>
-          </div>
-        </div>
+      <!-- 中间：文本提示 -->
+      <div class="column has-text-centered">
+        <p class="title is-4" style="font-weight: 600;">To “Autumn-colored”</p>
+      </div>
+      <!-- 右侧：输出视频 -->
+      <div class="column has-text-centered">
+        <video 
+          poster="static/images/ground_case3_ours_poster.png" 
+          controls 
+          muted 
+          loop 
+          autoplay 
+          preload="metadata"
+          class="result-video">
+          <source src="static/videos/bikeours.mp4" type="video/mp4">
+        </video>
+        <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">Ours (TSPVE)</p>
       </div>
     </div>
 
     <!-- Caption Text -->
     <div class="content has-text-justified" style="margin-top: 30px;">
-      <p>Qualitative comparison of zero-shot video editing results on real-world videos.</p>
+      <p>Qualitative comparison of zero-shot video editing results on real-world videos. Our TSPVE method preserves the original temporal structure while achieving accurate text-guided modifications.</p>
     </div>
   </div>
 </section>
-<!-- End Experiment 1 -->
+<!-- End TSPVE Editing Results -->
 
 <!-- Experiment 2 -->
 <section class="section">
